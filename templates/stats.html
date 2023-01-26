@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% block content%}
+
+
+    <div>
+        <img id="logo" src="{{url_for('static', filename='logo-transparent.png')}}">
+        <br>
+
+        <div class="table-responsive">
+            <table class="table table-hover table-sm ">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Short Link</th>
+                    <th scope="col">Link</th>
+                    <th scope="col">Visits</th>
+                    <th scope="col">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in data%}
+                <tr>
+                    <th scope="row">{{item.id}}</th>
+                    <td><a href="{{request.host_url}}{{item.shorted_link}}" target="_blank">{{request.host_url}}{{item.shorted_link}}</a></td>
+                    <td><a href="{{item.link}}" target="_blank">{{item.link}}</a></td>
+                    <td>{{item.num_visits}}</td>
+                    <td>{{item.creation_date}}</td>
+                </tr>
+                {% endfor %}
+                </tbody>
+
+            </table>
+        </div>
+
+        <br>
+
+    </div>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
+                    href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+
+
+{% endblock %}

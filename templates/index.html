@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+{% block content%}
+
+    <main role="main" class="inner cover col-md-8">
+        <img id="logo" src="{{url_for('static', filename='logo-transparent.png')}}">
+        <br>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <p class=flashes>
+            {% for message in messages %}
+            {{ message }}
+            {% endfor %}
+        </p>
+        {% endif %}
+        {% endwith %}
+
+        {% if shorted_link == ""%}
+        <form target="{{url_for('home')}}" method="post">
+            <div class="input-group mb-3">
+                <input type="url" class="form-control" placeholder="http://www.example.com" aria-label="link" name="grablink"
+                       aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary" type="submit">Short it</button>
+                </div>
+            </div>
+        </form>
+        {% else %}
+
+        <div class="input-group mb-3">
+            <input id="LinkInput" type="text" class="form-control" value="{{shorted_link}}" aria-label="link"
+                   name="grablink" aria-describedby="basic-addon2">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" onclick="CopyLink()">Copy Link</button>
+            </div>
+        </div>
+        {% endif %}
+
+        <br>
+        <label>--<a id="link_copied"></a>--</label>
+        <p class="lead">Shortini is a result of having some coffee left after a long day of work, so i decided to try and
+        create a very simple short url service, hopefully someone will find it useful and maybe give it a life somewhere
+        on the internet.<br> this is a first version , soon to be updated</p>
+        <p class="lead"></p>
+        <label>--<a id="again" href="{{url_for('home')}}"></a>--</label>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a
+                    href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+
+
+
+<script>function CopyLink() {
+  // Get the text field
+  var copyText = document.getElementById("LinkInput");
+
+  // Select the text field
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(copyText.value);
+
+  // Alert the copied text
+  let get = document.getElementById('link_copied')
+  get.innerHTML= "COPIED!";}
+</script>
+
+{% endblock %}
