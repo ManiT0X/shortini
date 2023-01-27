@@ -22,7 +22,7 @@
                 <tr>
                     <th scope="row">{{item.id}}</th>
                     <td><a href="{{request.host_url}}{{item.shorted_link}}" target="_blank">{{request.host_url}}{{item.shorted_link}}</a></td>
-                    <td><a href="{{item.link}}" target="_blank">{{item.link}}</a></td>
+                    <td><a href="{{item.link}}" target="_blank">{{item.link[0:50]}}</a></td>
                     <td>{{item.num_visits}}</td>
                     <td>{{item.creation_date}}</td>
                 </tr>
