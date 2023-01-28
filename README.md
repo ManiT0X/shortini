@@ -1,7 +1,7 @@
 # Shortini  
 a short url website with python  
 a very simple project  
-## <a href="https://iu0000.pythonanywhere.com/" target="_blank">Live Demo</a>  
+## <a href="https://iu0000.pythonanywhere.com/">Live Demo</a>  
   
 ![Shortini (1)](https://user-images.githubusercontent.com/120915619/215225183-f3468109-5d89-4749-b8f2-a3fdb0944bdf.png)  
   
